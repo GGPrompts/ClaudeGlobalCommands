@@ -312,7 +312,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🤝 Acknowledgments
 
-- Optimized for Claude Code and Claude 3.5 Sonnet
+- Optimized for Claude Code and Claude 4 Opus/Sonnet
 - Inspired by AI agent orchestration patterns
 - Built with token efficiency and cost optimization in mind
 
