@@ -1,0 +1,118 @@
+# Refactoring Plan Template
+
+template:
+  name: "refactoring_plan"
+  version: "1.0"
+  description: "Structured template for planning refactoring operations"
+
+structure:
+  overview:
+    header: "# Refactoring Plan"
+    content: |
+      ## Objective
+      {{objective}}
+      
+      ## Scope
+      {{scope_description}}
+  
+  current_state:
+    header: "## Current State Analysis"
+    subsections:
+      issues: |
+        ### Identified Issues
+        {{current_issues}}
+      
+      dependencies: |
+        ### Dependencies
+        {{dependency_analysis}}
+  
+  proposed_changes:
+    header: "## Proposed Changes"
+    format: "phased_list"
+    phase_template: |
+      ### Phase {{phase_number}}: {{phase_name}}
+      
+      **Files affected:**
+      {{file_list}}
+      
+      **Changes:**
+      {{change_details}}
+      
+      **Validation:**
+      {{validation_steps}}
+  
+  risk_assessment:
+    header: "## Risk Assessment"
+    risk_template: |
+      - **Risk**: {{risk_description}}
+        - **Likelihood**: {{likelihood}}
+        - **Impact**: {{impact}}
+        - **Mitigation**: {{mitigation_strategy}}
+  
+  implementation_steps:
+    header: "## Implementation Steps"
+    format: "numbered_checklist"
+    step_template: |
+      - [ ] {{step_description}}
+        - Estimated time: {{time_estimate}}
+        - Prerequisites: {{prerequisites}}
+  
+  rollback_plan:
+    header: "## Rollback Plan"
+    content: |
+      {{rollback_strategy}}
+  
+  success_criteria:
+    header: "## Success Criteria"
+    format: "checklist"
+    item_template: |
+      - [ ] {{criterion}}
+
+parameters:
+  required:
+    - objective: "Main goal of the refactoring"
+    - scope_description: "What will be refactored"
+    - current_issues: "Problems with current implementation"
+    - proposed_changes: "Array of phased changes"
+    - risk_assessment: "Array of risks with mitigation"
+  
+  optional:
+    - dependency_analysis: "Analysis of code dependencies"
+    - implementation_steps: "Detailed implementation checklist"
+    - rollback_strategy: "How to revert if needed"
+    - success_criteria: "How to measure success"
+    - time_estimate: "Estimated time for completion"
+
+risk_levels:
+  likelihood:
+    - low: "Unlikely to occur"
+    - medium: "Possible occurrence"
+    - high: "Likely to occur"
+  
+  impact:
+    - low: "Minor inconvenience"
+    - medium: "Moderate disruption"
+    - high: "Major system impact"
+
+phases:
+  - preparation: "Setup and analysis"
+  - implementation: "Core refactoring work"
+  - validation: "Testing and verification"
+  - cleanup: "Final adjustments"
+
+example_usage: |
+  parameters:
+    objective: "Extract common authentication logic into reusable service"
+    scope_description: "Authentication code across 5 controller files"
+    current_issues: |
+      - Duplicated authentication logic in multiple files
+      - Inconsistent error handling
+      - Hard to maintain and update
+    proposed_changes:
+      - phase_number: 1
+        phase_name: "Create Authentication Service"
+        file_list:
+          - "/src/services/auth.service.ts"
+          - "/src/interfaces/auth.interface.ts"
+        change_details: "Create new service with common auth methods"
+        validation_steps: "Unit tests for new service"

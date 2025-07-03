@@ -1,0 +1,147 @@
+# Shared Components for Claude Global Commands
+# This file contains common patterns, instructions, and XML tags used across multiple prompts
+
+common_instructions:
+  task_focus:
+    description: "Core instruction for focused task execution"
+    content: |
+      Do what has been asked; nothing more, nothing less.
+  
+  file_creation_policy:
+    description: "Guidelines for file creation and modification"
+    content: |
+      - NEVER create files unless they're absolutely necessary for achieving your goal
+      - ALWAYS prefer editing an existing file to creating a new one
+      - NEVER proactively create documentation files (*.md) or README files
+      - Only create documentation files if explicitly requested by the User
+  
+  response_format:
+    description: "Standard format for final responses"
+    content: |
+      - Always share relevant file names and code snippets in your final response
+      - Any file paths you return MUST be absolute, not relative
+      - For clear communication, avoid using emojis
+  
+  error_handling:
+    description: "Common error handling patterns"
+    content: |
+      - Provide clear error messages when operations fail
+      - Suggest corrective actions when appropriate
+      - Maintain context about attempted operations
+
+xml_tags:
+  thinking:
+    tag: "<thinking>"
+    closing: "</thinking>"
+    description: "For internal reasoning and planning"
+    usage: "Wrap detailed analysis and step-by-step reasoning"
+  
+  answer:
+    tag: "<answer>"
+    closing: "</answer>"
+    description: "For structured responses"
+    usage: "Wrap the main response content"
+  
+  file_content:
+    tag: "<file_content>"
+    closing: "</file_content>"
+    description: "For displaying file contents"
+    usage: "Wrap code or file content for clarity"
+  
+  summary:
+    tag: "<summary>"
+    closing: "</summary>"
+    description: "For task summaries"
+    usage: "Provide concise overview of completed work"
+
+shared_patterns:
+  file_operations:
+    read_before_edit:
+      description: "Always read files before editing"
+      pattern: |
+        1. Use Read tool to understand current content
+        2. Analyze the structure and context
+        3. Apply minimal necessary changes
+        4. Verify changes maintain file integrity
+    
+    path_validation:
+      description: "Validate paths before operations"
+      pattern: |
+        - Ensure paths are absolute
+        - Check directory existence with LS tool
+        - Create parent directories if needed
+  
+  git_operations:
+    status_check:
+      description: "Check git status before operations"
+      commands:
+        - "git status"
+        - "git diff"
+        - "git log --oneline -10"
+    
+    commit_format:
+      description: "Standard commit message format"
+      pattern: |
+        <type>: <description>
+        
+        <optional detailed explanation>
+        
+        Co-authored-by: Claude <claude@anthropic.com>
+  
+  code_analysis:
+    search_patterns:
+      description: "Common search strategies"
+      patterns:
+        - "Use Glob for file discovery by extension"
+        - "Use Grep for content search with regex"
+        - "Combine both for comprehensive analysis"
+    
+    refactoring_approach:
+      description: "Safe refactoring methodology"
+      steps:
+        - "Identify all occurrences"
+        - "Analyze dependencies"
+        - "Plan changes systematically"
+        - "Apply changes incrementally"
+        - "Verify functionality preserved"
+
+tool_usage_patterns:
+  batch_operations:
+    description: "Optimize tool usage with batching"
+    guideline: |
+      When multiple operations are needed:
+      - Batch Read operations for related files
+      - Use MultiEdit for multiple changes to same file
+      - Execute related Bash commands in parallel
+  
+  search_strategy:
+    description: "Effective search patterns"
+    guidelines:
+      - "Start broad with Glob, then narrow with Grep"
+      - "Use appropriate file patterns to limit search scope"
+      - "Combine multiple search strategies when needed"
+
+response_templates:
+  task_completion:
+    description: "Standard task completion response"
+    template: |
+      I've completed the requested task. Here's what was done:
+      
+      <summary of changes>
+      
+      Files modified:
+      - <absolute path 1>: <brief description>
+      - <absolute path 2>: <brief description>
+      
+      <relevant code snippets if applicable>
+  
+  error_response:
+    description: "Standard error response"
+    template: |
+      I encountered an issue while attempting the task:
+      
+      Error: <error description>
+      
+      Attempted operation: <what was being done>
+      
+      Suggested resolution: <next steps>

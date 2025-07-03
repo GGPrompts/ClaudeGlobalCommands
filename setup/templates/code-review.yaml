@@ -1,0 +1,77 @@
+# Code Review Response Template
+
+template:
+  name: "code_review"
+  version: "1.0"
+  description: "Structured template for code review responses"
+
+structure:
+  introduction: |
+    I've completed a review of the code in {{file_path}}. Here's my analysis:
+  
+  summary:
+    header: "## Summary"
+    content: |
+      {{overall_assessment}}
+  
+  issues:
+    header: "## Issues Found"
+    format: "numbered_list"
+    item_template: |
+      **{{severity}}**: {{description}}
+      - Location: {{location}}
+      - Suggestion: {{suggestion}}
+  
+  positive_aspects:
+    header: "## Positive Aspects"
+    format: "bullet_list"
+    item_template: |
+      - {{aspect}}
+  
+  suggestions:
+    header: "## Improvement Suggestions"
+    format: "numbered_list"
+    item_template: |
+      {{suggestion}}
+      ```{{language}}
+      {{code_example}}
+      ```
+  
+  conclusion: |
+    {{final_remarks}}
+
+parameters:
+  required:
+    - file_path: "Path to the file being reviewed"
+    - overall_assessment: "Brief overall assessment"
+    - issues_found: "Array of issues with severity, description, location, suggestion"
+  
+  optional:
+    - positive_aspects: "Array of positive observations"
+    - suggestions: "Array of improvement suggestions with examples"
+    - final_remarks: "Concluding thoughts"
+    - language: "Programming language for code examples"
+
+severity_levels:
+  - critical: "Bugs, security issues, data loss risks"
+  - major: "Performance issues, maintainability concerns"
+  - minor: "Style issues, minor improvements"
+  - info: "Informational notes, alternatives"
+
+example_usage: |
+  parameters:
+    file_path: "/home/user/project/src/main.py"
+    overall_assessment: "The code is functional but has several areas for improvement"
+    issues_found:
+      - severity: "major"
+        description: "No error handling in database operations"
+        location: "Lines 45-52"
+        suggestion: "Add try-except blocks with appropriate error handling"
+    positive_aspects:
+      - "Clear function naming conventions"
+      - "Good use of type hints"
+    suggestions:
+      - suggestion: "Consider using context managers for file operations"
+        code_example: |
+          with open(filename, 'r') as file:
+              content = file.read()

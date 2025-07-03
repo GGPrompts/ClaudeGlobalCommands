@@ -1,0 +1,115 @@
+# Template Manifest for Claude Global Commands
+# This file tracks all available templates and their parameters
+
+templates:
+  code_review:
+    description: "Template for code review responses"
+    location: "templates/code-review.yaml"
+    parameters:
+      - file_path: "Path to file being reviewed"
+      - issues_found: "List of issues discovered"
+      - suggestions: "Improvement suggestions"
+    usage: "For providing structured code review feedback"
+  
+  refactoring_plan:
+    description: "Template for refactoring planning"
+    location: "templates/refactoring-plan.yaml"
+    parameters:
+      - scope: "Files and components affected"
+      - changes: "List of planned changes"
+      - risks: "Potential risks and mitigations"
+    usage: "For planning complex refactoring operations"
+  
+  documentation_update:
+    description: "Template for documentation updates"
+    location: "templates/documentation-update.yaml"
+    parameters:
+      - files_updated: "List of documentation files"
+      - sections_modified: "Specific sections changed"
+      - examples_added: "New examples if any"
+    usage: "For structured documentation changes"
+  
+  test_results:
+    description: "Template for test execution results"
+    location: "templates/test-results.yaml"
+    parameters:
+      - test_command: "Command used to run tests"
+      - passed: "Number of passing tests"
+      - failed: "Number of failing tests"
+      - coverage: "Code coverage if available"
+    usage: "For reporting test execution outcomes"
+  
+  git_operations:
+    description: "Template for git operation summaries"
+    location: "templates/git-operations.yaml"
+    parameters:
+      - operation: "Type of git operation"
+      - branch: "Branch affected"
+      - commits: "Commits involved"
+      - files_changed: "Files modified"
+    usage: "For summarizing git operations"
+  
+  project_analysis:
+    description: "Template for project structure analysis"
+    location: "templates/project-analysis.yaml"
+    parameters:
+      - structure: "Directory structure overview"
+      - technologies: "Technologies and frameworks used"
+      - entry_points: "Main entry points"
+      - dependencies: "Key dependencies"
+    usage: "For comprehensive project analysis"
+  
+  error_diagnosis:
+    description: "Template for error diagnosis and resolution"
+    location: "templates/error-diagnosis.yaml"
+    parameters:
+      - error_type: "Type of error encountered"
+      - stack_trace: "Relevant stack trace"
+      - root_cause: "Identified root cause"
+      - resolution: "Steps to resolve"
+    usage: "For structured error analysis"
+  
+  performance_analysis:
+    description: "Template for performance analysis results"
+    location: "templates/performance-analysis.yaml"
+    parameters:
+      - metrics: "Performance metrics collected"
+      - bottlenecks: "Identified bottlenecks"
+      - recommendations: "Optimization recommendations"
+    usage: "For performance analysis reporting"
+
+template_categories:
+  development:
+    description: "Templates for development tasks"
+    templates:
+      - code_review
+      - refactoring_plan
+      - error_diagnosis
+  
+  documentation:
+    description: "Templates for documentation tasks"
+    templates:
+      - documentation_update
+      - project_analysis
+  
+  testing:
+    description: "Templates for testing and quality"
+    templates:
+      - test_results
+      - performance_analysis
+  
+  version_control:
+    description: "Templates for version control operations"
+    templates:
+      - git_operations
+
+usage_guidelines:
+  selection:
+    - "Choose template based on task type"
+    - "Templates can be combined for complex tasks"
+    - "Customize parameters as needed"
+  
+  implementation:
+    - "Reference templates using YAML anchors"
+    - "Override specific parameters when needed"
+    - "Maintain consistency across similar operations"

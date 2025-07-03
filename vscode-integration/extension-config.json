@@ -1,0 +1,27 @@
+{
+  "claude-code": {
+    "enableHooks": true,
+    "browser": {
+      "defaultBrowser": "edge",
+      "autoOpen": true,
+      "refreshOnSave": true,
+      "syncScrolling": true
+    },
+    "devtools": {
+      "autoAttach": true,
+      "preserveConsole": true,
+      "networkInspection": true,
+      "defaultViewport": "responsive"
+    },
+    "visualTesting": {
+      "screenshotPath": ".screenshots",
+      "diffThreshold": 0.1,
+      "highlightDifferences": true
+    },
+    "hooks": {
+      "preExecution": ["vscode_context", "browser_preparation"],
+      "execution": ["live_feedback", "console_streaming"],
+      "postExecution": ["vscode_actions", "browser_integration"]
+    }
+  }
+}
