@@ -20,15 +20,8 @@ A comprehensive collection of optimized AI agents and workflows for Claude Code,
 ### Installation
 
 ```bash
-# Create the commands directory if it doesn't exist
-mkdir -p ~/.claude/commands
-
-# Clone the repository
-git clone https://github.com/GGPrompts/ClaudeGlobalCommands.git
-cd ClaudeGlobalCommands
-
-# Run the installer
-./INSTALL.sh
+git clone https://github.com/YourUsername/CCGlobalCommands.git
+cd CCGlobalCommands
 ```
 
 ### Usage in Claude Code
@@ -202,44 +195,29 @@ This project implements advanced token optimization techniques:
 
 ## 🔧 Installation Options
 
-### Option 1: Full Installation (Recommended)
+### Option 1: Direct Use
 ```bash
-# Clone the repository
-git clone https://github.com/GGPrompts/ClaudeGlobalCommands.git
-cd ClaudeGlobalCommands
+# Clone and use directly
+git clone https://github.com/YourUsername/CCGlobalCommands.git
+cd CCGlobalCommands
 
-# Run the installer script
-./INSTALL.sh
-# Choose option 1 for complete installation
+# Use commands directly
+cat commands/guide.md | claude
 ```
 
-### Option 2: Manual Installation
+### Option 2: Claude Code Integration
 ```bash
-# Create necessary directories
-mkdir -p ~/.claude/commands ~/.claude/workflows ~/.claude/archive
-
-# Clone the repository
-git clone https://github.com/GGPrompts/ClaudeGlobalCommands.git
-cd ClaudeGlobalCommands
-
-# Copy files manually
-cp commands/*.md ~/.claude/commands/
-cp workflows/*.md ~/.claude/workflows/
-cp -r _archive/* ~/.claude/archive/
+# Copy to Claude Code commands directory
+cp -r commands/* ~/.claude/commands/
+cp -r workflows/* ~/.claude/workflows/
 ```
 
 ### Option 3: Selective Installation
 ```bash
-# Clone the repository
-git clone https://github.com/GGPrompts/ClaudeGlobalCommands.git
-cd ClaudeGlobalCommands
-
 # Install only core commands
-mkdir -p ~/.claude/commands
 cp commands/{guide,agents,senior-engineer,workflows}.md ~/.claude/commands/
 
-# Add specific workflows as needed
-mkdir -p ~/.claude/workflows
+# Add specific workflows
 cp workflows/{css-safety-check,visual-testing}.md ~/.claude/workflows/
 ```
 
@@ -312,15 +290,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🤝 Acknowledgments
 
-- Optimized for Claude Code and Claude 4 Opus/Sonnet
+- Optimized for Claude Code and Claude 3.5 Sonnet
 - Inspired by AI agent orchestration patterns
 - Built with token efficiency and cost optimization in mind
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/GGPrompts/ClaudeGlobalCommands/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/GGPrompts/ClaudeGlobalCommands/discussions)
-- **Documentation**: [Wiki](https://github.com/GGPrompts/ClaudeGlobalCommands/wiki)
+- **Issues**: [GitHub Issues](https://github.com/YourUsername/CCGlobalCommands/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/YourUsername/CCGlobalCommands/discussions)
+- **Documentation**: [Wiki](https://github.com/YourUsername/CCGlobalCommands/wiki)
 
 ---
 
