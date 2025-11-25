@@ -1,26 +1,46 @@
-# Claude Context - CCGlobalCommands
+# Claude Context - ClaudeGlobalCommands
 
-## Archive Folder Design
+## Project Structure
 
-The `_archive/` folder is intentionally used to prevent command list overload when users type slash commands. Instead of showing 20+ commands, users see only the most essential ones.
+A collection of slash commands and workflows for Claude Code, organized by category:
 
-### Structure:
-- **Core Commands** (in `/commands`): Immediately available via slash commands
-  - /guide, /agents, /workflows, /senior-engineer, etc.
-- **Archived Specialists** (in `/_archive`): Available via `/load` command
-  - engineering/: visual-designer, frontend-engineer, etc.
-  - infrastructure/: cloud-architect, kubernetes-specialist, etc.
-  - analysis/: business-analyst, security-analyst, etc.
-  - business/: project-manager, product-manager, etc.
-
-### Usage:
-```bash
-# Core commands - directly accessible
-/senior-engineer
-
-# Archived commands - load first
-/load _archive/engineering/visual-designer
+```
+.claude/commands/
+├── Core Commands (directly in /commands)
+│   guide.md, agents.md, workflows.md, execute.md,
+│   prompt-engineer.md, documentation.md,
+│   cicd-orchestrator.md, incident-commander.md
+├── engineering/
+│   senior-engineer.md, visual-designer.md
+├── business/
+│   legal-expert.md, marketing-expert.md
+├── infrastructure/
+│   cloud-architect.md
+└── workflows/
+    start-workflow.md, css-safety-check.md, visual-testing.md,
+    documentation-update.md, legal-compliance.md, social-media-campaign.md
 ```
 
-## Design Rationale
-This keeps the slash command UI clean and focused on the most commonly used commands, while still providing full access to all specialists when needed.
+## Usage
+
+All commands are directly accessible via slash commands:
+
+```bash
+/guide                    # Help system
+/agents                   # List all available agents
+/senior-engineer          # Code review specialist
+/engineering/visual-designer  # UI/UX design (subfolder)
+/workflows/css-safety-check   # CSS validation workflow
+```
+
+## Design Philosophy
+
+- **Actionable prompts**: Commands contain step-by-step workflows, not just descriptions
+- **Interactive refinement**: Use `AskUserQuestion` for dialog-based iteration
+- **Token-conscious**: Keep prompts focused and avoid unnecessary verbosity
+
+## Key Commands
+
+- `/prompt-engineer` - Interactive prompt crafting with refinement loop
+- `/guide` - Command catalog and help
+- `/execute` - Quick task routing to appropriate specialist
